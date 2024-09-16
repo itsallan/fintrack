@@ -7,9 +7,10 @@ export default async function DashboardPage() {
   const supabase = createServerComponentClient({ cookies })
   const { data: { session } } = await supabase.auth.getSession()
 
+
   if (!session) {
-    redirect('/')
+    redirect('/login');
   }
 
-  return <Dashboard user={session.user} />
+  return <Dashboard />;
 }
